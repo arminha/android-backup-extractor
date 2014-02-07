@@ -1,0 +1,19 @@
+apply plugin:'java'
+apply plugin:'application'
+
+mainClassName = 'org.nick.abe.Main'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.bouncycastle:bcprov-jdk15on:1.48'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.10'
+}
+
