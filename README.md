@@ -1,35 +1,31 @@
 Android backup extractor
 ========================
 
-Utility to extract and repack Android backups created with ```adb backup``` (ICS+). 
-Largely based on BackupManagerService.java from AOSP. 
+Utility to extract and repack Android backups created with ```adb backup``` (ICS+).
+Largely based on BackupManagerService.java from AOSP.
 
-Usage: 
+Build
+-----
 
-Download the latest version of Bouncy Castle Provider jar 
-(```bcprov-jdk15on-148.jar```) from here:
+ - Create abe.jar with ```./gradlew build```
 
-http://www.bouncycastle.org/latest_releases.html
+ - Create an archive including all libraries and shell scripts to start abe with ```./gradlew distZip```
 
-Drop the latest Bouncy Castle jar in lib/, import in Eclipse and adjust 
-build path if necessary. Use the abe.sh script to start the utility. 
-Syntax: 
+Usage
+-----
 
-	unpack:	      abe.sh unpack  <backup.ab> <backup.tar> [password]
-	pack:	        abe.sh pack    <backup.tar> <backup.ab> [password]
-	pack for 4.4:	abe.sh pack-kk <backup.tar> <backup.ab> [password]
+_abe_ in this example refers to the shell script created with ```./gradlew distZip```
 
-If you don't specify a password the backup archive won't be encrypted but 
-only compressed. 
+Syntax:
 
-Alternatively: 
+	unpack:	        abe unpack  <backup.ab> <backup.tar> [password]
+	pack:	        abe pack    <backup.tar> <backup.ab> [password]
+	pack for 4.4:	abe pack-kk <backup.tar> <backup.ab> [password]
 
-Use the bundled Ant script to create an all-in-one jar and run with: 
-(you still need to put the Bouncy Castle jar in lib/)
+If you don't specify a password the backup archive won't be encrypted but
+only compressed.
 
-```java -jar abe.jar pack|unpack [parameters as above]```
-
-(Thanks to Jan Peter Stotz for contributing the build.xml file)
+Alternatively abe can also be started through gradle with ```./gradlew run```.
 
 More details about the backup format and the tool implementation in the 
 associated blog post: 
