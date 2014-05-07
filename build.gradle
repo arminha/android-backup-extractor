@@ -1,5 +1,9 @@
-apply plugin:'java'
-apply plugin:'application'
+apply plugin: 'java'
+apply plugin: 'application'
+
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+apply plugin: 'checkstyle'
 
 mainClassName = 'org.nick.abe.Main'
 
@@ -12,6 +16,43 @@ repositories {
 dependencies {
     compile 'org.bouncycastle:bcprov-jdk15on:1.48'
 }
+
+/////////////////
+// findbugs
+
+findbugs {
+    toolVersion = "2.0.3"
+    ignoreFailures = true
+}
+
+if (!rootProject.hasProperty("findbugsReportXml") || findbugsReportXml != 'true') {
+    tasks.withType(FindBugs) {
+        reports {
+            xml.enabled = false
+            html.enabled = true
+        }
+    }
+}
+
+/////////////////
+// pmd
+
+pmd {
+    ignoreFailures = true
+    toolVersion = '5.0.5'
+}
+
+/////////////////
+// checkstyle
+
+checkstyle {
+    ignoreFailures = true
+    toolVersion = '5.7'
+    configFile = rootProject.file('config/checkstyle/checkstyle.xml')
+}
+
+/////////////////
+// wrapper
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.10'
