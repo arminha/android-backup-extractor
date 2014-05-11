@@ -1,6 +1,8 @@
 Android backup extractor
 ========================
 
+[![Build Status](https://travis-ci.org/arminha/android-backup-extractor.svg?branch=master)](https://travis-ci.org/arminha/android-backup-extractor)
+
 Utility to extract and repack Android backups created with ```adb backup``` (ICS+).
 Largely based on BackupManagerService.java from AOSP.
 
