@@ -7,7 +7,7 @@ apply plugin: 'checkstyle'
 
 mainClassName = 'org.nick.abe.Main'
 
-sourceCompatibility = 1.7
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -21,7 +21,7 @@ dependencies {
 // findbugs
 
 findbugs {
-    toolVersion = "2.0.3"
+    toolVersion = "3.0.1"
     ignoreFailures = true
 }
 
@@ -39,7 +39,7 @@ if (!rootProject.hasProperty("findbugsReportXml") || findbugsReportXml != 'true'
 
 pmd {
     ignoreFailures = true
-    toolVersion = '5.0.5'
+    toolVersion = '5.4.1'
 }
 
 /////////////////
